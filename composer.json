@@ -1,0 +1,26 @@
+{
+    "require": {
+        "league/route": "^2.0",
+        "zendframework/zend-diactoros": "^1.3",
+        "symfony/debug": "^3.2",
+        "symfony/var-dumper": "^3.2",
+        "illuminate/database": "^5.4",
+        "league/plates": "^3.3",
+        "respect/validation": "^1.1",
+        "vlucas/phpdotenv": "^2.4",
+        "filp/whoops": "^2.1",
+        "http-interop/http-middleware": "^0.4.1",
+        "middlewares/utils": "^0.9.0"
+
+    },
+     "autoload": {
+        "files":["framework/helper.php"],
+        "psr-4": {
+            "MinMvc\\": "framework/",
+            "App\\": "app/"
+        }
+    },
+    "require-dev": {
+        "middlewares/debugbar": "^0.3.0"
+    }
+}
