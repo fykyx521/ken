@@ -9,9 +9,8 @@
         "respect/validation": "^1.1",
         "vlucas/phpdotenv": "^2.4",
         "filp/whoops": "^2.1",
-        "http-interop/http-middleware": "^0.4.1",
-        "middlewares/utils": "^0.9.0",
-        "monolog/monolog": "^1.22"
+        "monolog/monolog": "^1.22",
+        "cartalyst/sentinel": "2.0.*"
 
     },
      "autoload": {
@@ -22,6 +21,6 @@
         }
     },
     "require-dev": {
-        "middlewares/debugbar": "^0.3.0"
+        
     }
 }
