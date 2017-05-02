@@ -6,7 +6,8 @@ use Psr\Http\Message\ServerRequestInterface;
 
 include '../../vendor/autoload.php';
 
-$app=new \Ken\App();
+$app=new \Ken\App(realpath(__DIR__.'/../'));
+
 $debugservice=new \Ken\Debug\DebugServiceProvider();
 //$debugservice->setContainer($app->getContainer());
 $app->addServiceProvider($debugservice);
@@ -21,4 +22,10 @@ $app->get('/',function(ServerRequestInterface  $request,ResponseInterface $respo
     $response->withHeader('Content-Type','text/html');
     return $response;
 });
+
+
+$app->group('/wechat',function() use ($app){
+    $app->get('/menu/index',"\App\Wechat\MenuController::index");
+});
+
 return $app;
