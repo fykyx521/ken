@@ -22,3 +22,14 @@ if(!function_exists("app"))
         return App::getApp();
     }
 }
+
+if(!function_exists("view"))
+{
+    function view($viewname,$data=[])
+    {
+        $view=app('view');
+        $content=$view->render($viewname,$data);
+        return new \Zend\Diactoros\Response\HtmlResponse($content);
+
+    }
+}

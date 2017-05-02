@@ -108,7 +108,7 @@ class App implements RouteCollectionInterface,StrategyAwareInterface,ContainerAw
 
     public function publicpath()
     {
-        return $this->basepath.'/publicpath/';
+        return $this->basepath.'/public/';
     }
 
 

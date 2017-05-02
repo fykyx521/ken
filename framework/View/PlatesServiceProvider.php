@@ -14,6 +14,8 @@ use League\Container\ServiceProvider\BootableServiceProviderInterface;
 class PlatesServiceProvider extends AbstractServiceProvider implements BootableServiceProviderInterface
 {
 
+
+    protected $provides = ['view'];
     /**
      * Method will be invoked on registration of a service provider implementing
      * this interface. Provides ability for eager loading of Service Providers.
@@ -36,12 +38,15 @@ class PlatesServiceProvider extends AbstractServiceProvider implements BootableS
     {
         // TODO: Implement register() method.
         $this->getContainer()->share('view',function(){
-             return  new \League\Plates\Engine($this->getPlatesPath());
+            $template=new \League\Plates\Engine($this->getPlatesPath());
+//            $template->setFileExtension('plates');
+            return $template;
         });
     }
 
     protected function getPlatesPath()
     {
-        return app()->resourcepath().'view/';
+        return app()->resourcepath().'views/';
     }
+
 }
