@@ -10,3 +10,15 @@ if(!function_exists('dd'))
         exit;
     }
 }
+
+if(!function_exists("app"))
+{
+    function app($alias=null)
+    {
+        if($alias)
+        {
+            return App::getApp()->getContainer()->get($alias);
+        }
+        return App::getApp();
+    }
+}

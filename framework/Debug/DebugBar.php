@@ -25,7 +25,6 @@ class DebugBar
 
     public function handler(ServerRequestInterface $request, ResponseInterface $response, callable $next)
     {
-
         return $this->debug->process($request,new KenDelegate($response,$next));
 
     }

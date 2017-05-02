@@ -32,9 +32,13 @@ class App implements RouteCollectionInterface,StrategyAwareInterface,ContainerAw
 	/** @var RouteCollection $route*/
 	protected $route;
 
+	private static $app=null;
 
-	public function __construct()
+	private $basepath='/';
+
+	public function __construct($basthpath="/")
 	{
+	    $this->basepath=$basthpath;
 		$this->init();
 	}
 
@@ -50,7 +54,13 @@ class App implements RouteCollectionInterface,StrategyAwareInterface,ContainerAw
 		$this->container->share('emitter', \Zend\Diactoros\Response\SapiEmitter::class);
 		$this->route = new \League\Route\RouteCollection($this->container);
 		$this->container->share('route',$this->route);
+		self::$app=$this;
 	}
+
+	public static function getApp()
+    {
+        return self::$app;
+    }
 
 
 
@@ -81,6 +91,30 @@ class App implements RouteCollectionInterface,StrategyAwareInterface,ContainerAw
      */
      public function map($method, $path, $handler){
          return $this->route->map($method,$path,$handler);
+     }
+
+    /**
+     *   分组
+     * @param $path
+     * @param $callable
+     * @return \League\Route\RouteGroup
+     */
+     public function group($path,$callable)
+     {
+         return $this->route->group($path,$callable);
+     }
+
+
+
+    public function publicpath()
+    {
+        return $this->basepath.'/publicpath/';
+    }
+
+
+     public function resourcepath()
+     {
+         return $this->basepath.'/resources/';
      }
 
 
